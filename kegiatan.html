@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kegiatan - BEM Kampus</title>
+    <style>
+        /* Style untuk tulisan tengah */
+        .center-text {
+            text-align: center;
+        }
+
+        /* Style untuk gambar modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            padding-top: 50px;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.9);
+        }
+
+        /* Style untuk konten modal */
+        .modal-content {
+            margin: auto;
+            display: block;
+            width: auto; /* Agar gambar dalam modal responsif */
+            max-width: 80%; /* Maksimum lebar gambar dalam modal */
+            max-height: 80%; /* Maksimum tinggi gambar dalam modal */
+        }
+
+        /* Style untuk caption gambar dalam modal */
+        .caption {
+            margin: auto;
+            display: block;
+            width: 80%;
+            max-width: 700px;
+            text-align: center;
+            color: #ccc;
+            padding: 10px 0;
+            height: 150px;
+        }
+
+        /* Animasi untuk membuka modal */
+        .modal-content, #caption {
+            -webkit-animation-name: zoom;
+            -webkit-animation-duration: 0.6s;
+            animation-name: zoom;
+            animation-duration: 0.6s;
+        }
+
+        @-webkit-keyframes zoom {
+            from {-webkit-transform:scale(0)} 
+            to {-webkit-transform:scale(1)}
+        }
+
+        @keyframes zoom {
+            from {transform:scale(0)} 
+            to {transform:scale(1)}
+        }
+
+        /* Tombol close pada modal */
+        .close {
+            position: absolute;
+            top: 15px;
+            right: 35px;
+            color: #fff;
+            font-size: 40px;
+            font-weight: bold;
+            transition: 0.3s;
+            z-index: 9999;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: #bbb;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        /* Style untuk gambar dalam galeri */
+        .image-gallery img {
+            max-width: 100%;
+            height: auto;
+            cursor: pointer; /* Menambahkan pointer saat mengarahkan ke gambar */
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1 class="center-text">Kegiatan BEM Kampus</h1>
+</header>
+
+<section class="center-text">
+    <h2>Pembagian Takjil di Simpang Lampu Merah Menuju Keprimall</h2>
+    <p>Kegiatan BEM yang pertama ialah: </p>
+    <p>Pada tanggal 24 Maret 2024, BEM Kampus akan mengadakan kegiatan pembagian takjil di simpang Lampu Merah menuju Keprimall. Ini adalah bagian dari program kami untuk memberikan dukungan kepada masyarakat sekitar selama bulan suci Ramadan.</p>
+    
+    <h3>Foto-foto Kegiatan</h3>
+    <div class="image-gallery">
+        <img src="fototakjil1.jpeg" alt="Pembagian Takjil">
+        <img src="kepri1.jpeg" alt="Pembagian Takjil">
+        <img src="kepri2.jpeg" alt="Pembagian Takjil">
+        <img src="kepri3.jpeg" alt="Pembagian Takjil">
+        <img src="kepri4.jpeg" alt="Pembagian Takjil">
+    </div>
+</section>
+
+<!-- Garis pembatas antara kegiatan pertama dan kedua -->
+<hr class="activity-divider">
+
+<section class="center-text">
+    <h2>Pembagian Takjil di simpang glael</h2>
+    <p>Kegiatan BEM yang kedua ialah: </p>
+    <p>Pada tanggal 24 Maret 2024, BEM Kampus akan mengadakan kegiatan pembagian takjil di simpang Lampu Merah menuju Keprimall. Ini adalah bagian dari program kami untuk memberikan dukungan kepada masyarakat sekitar selama bulan suci Ramadan.</p>
+    
+    <h3>Foto-foto Kegiatan</h3>
+    <div class="image-gallery">
+        <img src="glael1.JPG" alt="Kegiatan 1">
+        <img src="glael2.JPG" alt="Kegiatan 2">
+        <img src="glael3.JPG" alt="Kegiatan 3">
+        <img src="glael4.JPG" alt="Kegiatan 4">
+        <img src="glael5.JPG" alt="Kegiatan 5">
+        <img src="glael6.JPG" alt="Kegiatan 6">
+        <img src="glael7.JPG" alt="Kegiatan 7">
+        <img src="glael8.JPG" alt="Kegiatan 8">
+    </div>
+</section>
+
+<!-- Modal -->
+<div id="myModal" class="modal">
+  <span class="close" onclick="closeModal()">&times;</span>
+  <img class="modal-content" id="img01">
+  <div id="caption"></div>
+</div>
+
+<script>
+// Mendapatkan elemen gambar
+var images = document.querySelectorAll('.image-gallery img');
+
+// Mendapatkan elemen modal
+var modal = document.getElementById('myModal');
+
+// Mendapatkan gambar dan caption pada modal
+var modalImg = document.getElementById("img01");
+var captionText = document.getElementById("caption");
+
+// Iterasi semua gambar dan menambahkan event listener saat diklik
+images.forEach(function(img) {
+  img.addEventListener('click', function() {
+    modal.style.display = "block"; // Tampilkan modal
+    modalImg.src = this.src; // Setel gambar yang diklik ke dalam modal
+    captionText.innerHTML = this.alt; // Setel caption gambar
+  });
+});
+
+// Fungsi untuk menutup modal
+function closeModal() {
+  modal.style.display = "none";
+}
+</script>
+
+</body>
+</html>
